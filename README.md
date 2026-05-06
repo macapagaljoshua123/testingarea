@@ -14,14 +14,14 @@ Navigate to the `backend` directory and set up your environment:
 
 ```bash
 cd backend
-python -m venv venv
+py -m venv venv
 # On Windows
 .\venv\Scripts\activate
 # On Mac/Linux
 source venv/bin/activate
 
 pip install -r requirements.txt
-python main.py
+py main.py
 ```
 The backend will run at `http://localhost:8000`.
 
