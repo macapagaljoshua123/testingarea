@@ -1,11 +1,27 @@
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [message, setMessage] = useState('Connecting to backend...');
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/hello')
+      .then(response => response.json())
+      .then(data => setMessage(data.message))
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        setMessage('Failed to connect to backend.');
+      });
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          FastAPI Backend says: <code>{message}</code>
+        </p>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
